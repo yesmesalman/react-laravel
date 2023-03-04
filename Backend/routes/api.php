@@ -34,5 +34,5 @@ Route::middleware('auth:api')->group(function () {
     Route::post('edit-profile/upload-picture', [UserController::class, 'uploadPicture']);
     Route::post('get-profile-details', [UserController::class, 'getProfileDetails']);
 
-    Route::get('fetch-news', [NewsController::class, 'index']);
+    Route::post('fetch-news', [NewsController::class, 'index']);
 });
