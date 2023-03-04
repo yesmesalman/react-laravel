@@ -30,12 +30,6 @@ class UserController extends Controller
         ];
     }
 
-    private function handleUserFcmToken($user, $fcm_token)
-    {
-        $user->fcm_token = $fcm_token;
-        $user->save();
-    }
-
     public function register(Request $request)
     {
         try {
@@ -47,7 +41,6 @@ class UserController extends Controller
                 'country_id' => 'numeric',
                 'state_id' => 'numeric',
                 'city_id' => 'numeric',
-                'zip_code' => 'string',
                 'contact_number' => 'required|max:255'
             ];
 
@@ -100,10 +93,6 @@ class UserController extends Controller
 
             if ($user->status == 0) {
                 throw new \ErrorException('Please verify your account');
-            }
-
-            if (isset($request->fcm_token)) {
-                $this->handleUserFcmToken($user, $request->fcm_token);
             }
 
             $response = [
@@ -266,11 +255,6 @@ class UserController extends Controller
 
             if ($request->has('city_id')) {
                 $user->city_id = $request->city_id;
-                $user->save();
-            }
-
-            if ($request->has('zip_code')) {
-                $user->zip_code = $request->zip_code;
                 $user->save();
             }
 

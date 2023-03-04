@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'status', 'role_id', 'country_id', 'state_id', 'city_id', 'zip_code', 'service_id', 'experience', 'otp', 'status', 'email', 'password', 'contact_mode', 'contact_number', 'profile_picture'
+        'first_name', 'last_name', 'status', 'role_id', 'country_id', 'state_id', 'city_id', 'service_id', 'experience', 'otp', 'status', 'email', 'password', 'contact_mode', 'contact_number', 'profile_picture'
     ];
 
     /**
@@ -65,7 +65,6 @@ class User extends Authenticatable
             "state" => $this->State ? $this->State->name : null,
             "city_id" => $this->city_id,
             "city" => $this->City ? $this->City->name : null,
-            "zip_code" => $this->zip_code,
             "otp" => $this->otp,
             "contact_number" => $this->contact_number,
             "profile_picture" => Media::convertFullUrl($this->profile_picture),

@@ -24,13 +24,9 @@ class CreateUsersTable extends Migration
             $table->integer('country_id')->nullable();
             $table->integer('state_id')->nullable();
             $table->integer('city_id')->nullable();
-            $table->string('zip_code')->nullable();
             $table->string('otp')->nullable();
             $table->string('contact_number')->nullable();
             $table->string('profile_picture')->nullable();
-            $table->string('fcm_token', 500)->nullable();
-            $table->string('social_type')->nullable();
-            $table->string('social_id', 1000)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

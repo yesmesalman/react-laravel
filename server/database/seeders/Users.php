@@ -23,7 +23,6 @@ class Users extends Seeder
             'country_id' => 92,
             'state_id' => 2787,
             'city_id' => 239,
-            'zip_code' => "123456",
             'otp' => "1234",
             'contact_number' => "123123321",
             'status' => 1,
