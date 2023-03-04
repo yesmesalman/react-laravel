@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\NewsController;
 use App\Http\Controllers\API\CommonController;
 
 /*
@@ -27,11 +28,11 @@ Route::post('get-states/{id}', [CommonController::class, 'getStates']);
 Route::post('get-cities/{id}', [CommonController::class, 'getcities']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::group(['middleware' => 'check.user'], function () {
-        Route::post('logout', [UserController::class, 'logout']);
+    Route::post('logout', [UserController::class, 'logout']);
 
-        Route::post('edit-profile', [UserController::class, 'editProfile']);
-        Route::post('edit-profile/upload-picture', [UserController::class, 'uploadPicture']);
-        Route::post('get-profile-details', [UserController::class, 'getProfileDetails']);
-    });
+    Route::post('edit-profile', [UserController::class, 'editProfile']);
+    Route::post('edit-profile/upload-picture', [UserController::class, 'uploadPicture']);
+    Route::post('get-profile-details', [UserController::class, 'getProfileDetails']);
+
+    Route::get('fetch-news', [NewsController::class, 'index']);
 });
