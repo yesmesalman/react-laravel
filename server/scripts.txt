@@ -1,0 +1,4 @@
+Staging API Url: http://www.rate-beagle.goliveapps.com/api
+
+
+Settings table
