@@ -13,7 +13,7 @@ class NewsAPI
         $url = 'https://newsapi.org/v2/top-headlines?country=us';
 
         // the API key for NewsAPI
-        $api_key = '1b8f77268c6b4bf0b0cb992cb20de55e';
+        $api_key = env('NEWS_API_KEY');
 
         // Create a new cURL resource
         $curl = curl_init();
