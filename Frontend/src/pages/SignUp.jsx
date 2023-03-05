@@ -30,6 +30,7 @@ function SignUp() {
 
       if (!result.status) {
         setErrors(result.errors);
+        return
       }
 
       Global.saveDataInLocalStorage('token', result?.data?.access_token);

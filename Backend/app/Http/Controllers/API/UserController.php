@@ -75,7 +75,7 @@ class UserController extends Controller
     public function login(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), [
+            $this->validate($request, [
                 'email' => 'required|email',
                 'password' => 'required'
             ], [
@@ -84,10 +84,6 @@ class UserController extends Controller
                 'password.required' => 'Please write password',
                 'password.min' => 'Password must be 6 characters long'
             ]);
-
-            if ($validator->fails()) {
-                throw new \ErrorException($validator->errors()->first());
-            }
 
             if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 throw new \ErrorException('Invalid Credentials');
@@ -100,16 +96,16 @@ class UserController extends Controller
             }
 
             $response = [
-                'status' => 200,
-                'message' => 'Successfully logged in',
+                'success' => true,
+                'message' => 'logged in',
                 'data' => $this->userAuthResponse($user)
             ];
 
             return response()->json($response, 200);
-        } catch (Exception $e) {
+        } catch (ValidationException $e) {
             return response()->json([
-                'status' => 422,
-                'message' => $e->getMessage(),
+                'success' => false,
+                'errors' => $e->errors(),
             ], 422);
         }
     }
