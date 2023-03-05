@@ -28,6 +28,10 @@ class Global {
     static getDataFromLocalStorage(key) {
         return localStorage.getItem(key);
     }
+
+    static isAuthenticated() {
+        return localStorage.getItem('token') ? true : false;
+    }
 }
 
 
