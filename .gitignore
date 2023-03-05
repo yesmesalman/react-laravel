@@ -1,36 +1,36 @@
-Backend/node_modules
-Backend/public/hot
-Backend/public/storage
-Backend/storage/*.key
-Backend/vendor
-Backend/.phpunit.result.cache
-Backend/Homestead.json
-Backend/Homestead.yaml
-Backend/npm-debug.log
-Backend/yarn-error.log
+laravel-app/node_modules
+laravel-app/public/hot
+laravel-app/public/storage
+laravel-app/storage/*.key
+laravel-app/vendor
+laravel-app/.phpunit.result.cache
+laravel-app/Homestead.json
+laravel-app/Homestead.yaml
+laravel-app/npm-debug.log
+laravel-app/yarn-error.log
 
 # dependencies
-Frontend/node_modules
-Frontend/.pnp
-Frontend/.pnp.js
+react-app/node_modules
+react-app/.pnp
+react-app/.pnp.js
 
 # testing
-Frontend/coverage
+react-app/coverage
 
 # production
-Frontend/build
+react-app/build
 
 # misc
-Frontend/.DS_Store
-Frontend/.env.local
-Frontend/.env.development.local
-Frontend/.env.test.local
-Frontend/.env.production.local
+react-app/.DS_Store
+react-app/.env.local
+react-app/.env.development.local
+react-app/.env.test.local
+react-app/.env.production.local
 
-Frontend/npm-debug.log*
-Frontend/yarn-debug.log*
-Frontend/yarn-error.log*
+react-app/npm-debug.log*
+react-app/yarn-debug.log*
+react-app/yarn-error.log*
 
-Frontend/dist
-Frontend/dist-ssr
+react-app/dist
+react-app/dist-ssr
 *.local

@@ -21,7 +21,6 @@ To run this application, you must have the following installed on your system:
 3. Create the necessary directories for your React.js and Laravel applications:
 ``` mkdir react-app laravel-app ```
 
-
 4. Copy the application files to the appropriate directories:
 
 - Copy your React.js application files to the `react-app` directory.
@@ -35,14 +34,24 @@ To run this application, you must have the following installed on your system:
     DB_PASSWORD=your-db-password
 ```
 
-6. Start the Docker Compose environment:
+6. set API keys for News APIs in laravel env files
+```
+    NEWS_API_KEY="API_KEY"
+
+    OPEN_NEWS_API_HOST="API_HOST"
+    OPEN_NEWS_API_KEY="API_KEY"
+
+    PERIGON_API_KEY="API_KEY"
+```
+
+7. Start the Docker Compose environment:
 
 ``` docker-compose up ``` 
 
 
 This will start the containers for your React.js and Laravel applications, as well as the MySQL database.
 
-7. You should now be able to access your React.js application by visiting http://localhost:3000 in your web browser and your Laravel application by visiting http://localhost:8000 in your web browser.
+8. You should now be able to access your React.js application by visiting http://localhost:3000 in your web browser and your Laravel application by visiting http://localhost:8000 in your web browser.
 
 ## Running Commands
 
