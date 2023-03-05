@@ -37,7 +37,7 @@ class NewsController extends Controller
                 foreach ($newsAPI->articles as $item) {
                     array_push($data, [
                         "id" => $item->publishedAt,
-                        "source" => "news_api",
+                        "source" => "News API",
                         "title" => $item->title,
                         "description" => $item->description,
                         "url" => $item->url,
@@ -50,7 +50,7 @@ class NewsController extends Controller
                 foreach ($openNewsAPI->news as $item) {
                     array_push($data, [
                         "id" => $item->id,
-                        "source" => "open_news_api",
+                        "source" => "Open News API",
                         "title" => $item->title,
                         "description" => null,
                         "url" => $item->longURL,
@@ -62,7 +62,7 @@ class NewsController extends Controller
             foreach ($perigonAPI->articles as $item) {
                 array_push($data, [
                     "id" => $item->articleId,
-                    "source" => "perigon_api",
+                    "source" => "Perigon API",
                     "title" => $item->title,
                     "description" => $item->description,
                     "url" => $item->url,

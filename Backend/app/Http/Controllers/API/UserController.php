@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use App\Enums\UserTypes;
 use App\Helpers\Media;
 use App\Models\User;
@@ -33,42 +34,40 @@ class UserController extends Controller
     public function register(Request $request)
     {
         try {
-            $validation = [
+            $this->validate($request, [
                 'first_name' => 'required|max:255',
                 'last_name' => 'required|max:255',
                 'email' => 'required|email|unique:users',
                 'password' => 'required|confirmed|min:6',
-                'country_id' => 'numeric',
-                'state_id' => 'numeric',
-                'city_id' => 'numeric',
-                'contact_number' => 'required|max:255'
-            ];
-
-            $validator = Validator::make($request->all(), $validation);
-
-            if ($validator->fails()) {
-                throw new \ErrorException($validator->errors()->first());
-            }
+            ], [
+                'first_name.required' => 'Please write first name',
+                'last_name.required' => 'Please write last name',
+                'email.email' => 'Please write email',
+                'email.required' => 'Please write email',
+                'email.unique' => 'Account with this email already exists',
+                'password.required' => 'Please write password',
+                'password.confirmed' => 'Password does not match',
+                'password.min' => 'Password must be 6 characters long'
+            ]);
 
             $input = $request->all();
             $input['password'] = bcrypt($input['password']);
             $input['otp'] = $this->genegerateOTP();
             $input['status'] = 1; // Account is active by default
             $input['role_id'] = UserTypes::User; // Account is type User
-
             $user = User::create($input);
 
             $response = [
-                'status' => 200,
+                'success' => true,
                 'message' => 'Acccount has been created',
                 'data' => $this->userAuthResponse($user)
             ];
 
             return response()->json($response, 200);
-        } catch (Exception $e) {
+        } catch (ValidationException $e) {
             return response()->json([
-                'status' => 422,
-                'message' => $e->getMessage(),
+                'success' => false,
+                'errors' => $e->errors(),
             ], 422);
         }
     }
